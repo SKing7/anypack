@@ -1,0 +1,21 @@
+{
+  "name": "localpack",
+  "version": "1.0.0",
+  "description": "webpack the local deps ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sking7",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^1.3.0",
+    "escodegen": "^1.6.1",
+    "esprima": "^2.4.1",
+    "glob": "^5.0.12"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.1.0"
+  }
+}
