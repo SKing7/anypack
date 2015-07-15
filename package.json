@@ -1,6 +1,6 @@
 {
-  "name": "localpack",
-  "version": "1.0.0",
+  "name": "anypack",
+  "version": "0.0.1",
   "description": "webpack the local deps ",
   "main": "index.js",
   "scripts": {
@@ -17,5 +17,25 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SKing7/anypack.git"
+  },
+  "keywords": [
+    "web",
+    "pack",
+    "pack",
+    "the",
+    "deps",
+    "you",
+    "want"
+  ],
+  "bugs": {
+    "url": "https://github.com/SKing7/anypack/issues"
+  },
+  "homepage": "https://github.com/SKing7/anypack#readme"
 }
