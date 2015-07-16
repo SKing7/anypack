@@ -15,7 +15,7 @@ gulp.task('babel-build', function() {
   .pipe(babel())
   .pipe(gulp.dest('build'))
 })
-gulp.task('watch', function() {
+gulp.task('watch', ['babel'], function() {
   gulp.watch(paths.babel, ['babel'])
 })
 gulp.task('default', ['babel-build']);
