@@ -1,12 +1,12 @@
 "use strict";
 
-var tempateMap = require("./templateFactory");
-var nUtil = require("./nodeUtil");
-var otree = require("./tree");
-
 var fs = require("fs");
 var _ = require("lodash");
 var path = require("path");
+
+var tempateMap = require("./templateFactory");
+var nUtil = require("./nodeUtil");
+var otree = require("./tree");
 
 var regx = {
     tplRaw: /^['"]\.\/[^'"]+['"]$/,
@@ -19,8 +19,11 @@ function defineScope(options) {
     this.options = _.assign({}, options);
 }
 defineScope.prototype = {
+
     createRequireFunBody: function createRequireFunBody(baseInfo) {
+
         var baseInfoText = baseInfo.text;
+
         var deps = baseInfoText.oriDeps;
         var vars = baseInfoText.oriVars;
 
@@ -32,6 +35,8 @@ defineScope.prototype = {
         return tempateMap.defineWrapper(baseInfoText.name, noInlined.deps, noInlined.vars, tempateMap.top + dynamicBody + tail);
 
         function filterVars() {
+
+            // match tpl deps regx
             var rtVar = [];
             var rtDeps = [];
             deps.forEach(function (v, k) {
@@ -49,24 +54,15 @@ defineScope.prototype = {
     getTplContentByOrder: function getTplContentByOrder(deps) {
         var _this = this;
 
-        var depContentQueue = [];
+        var $util = require("./util");
+        var contentQueue = [];
         deps = deps.filter(function (v, k) {
             v = v.value;
-            var pathStr = undefined;
             if (regx.tpl.test(v)) {
-                var tree = new otree({
-                    src: path.resolve(path.join("./", _this.options.dir, v + ".js"))
-                });
-                var depAst = tree.curAst();
-                if (depAst.type === "Program") {
-                    depAst.body.forEach(function (item) {
-                        var baseInfo = nUtil.getFormattedBaseInfo(item);
-                        depContentQueue.push(baseInfo.text.callBackFunBody);
-                    });
-                }
+                contentQueue.push($util.inlineDefine(v, _this.options.dir).join(""));
             }
         });
-        return depContentQueue;
+        return contentQueue;
     },
     inlinedVars: function inlinedVars(biObj) {
         var baseInfo = biObj.text;

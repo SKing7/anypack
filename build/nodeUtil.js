@@ -6,11 +6,6 @@ var escodegen = require('escodegen');
 
 module.exports = util;
 
-util.getDefineInfoMap = function (node, options) {
-    if (this.isDefineModule(node)) {
-        return node.expression.arguments[2];
-    }
-};
 util.getDefineFunBody = function (node, options) {
     //console.log(JSON.stringify(node, null, 4));
     if (this.isDefineModule(node)) {
@@ -46,26 +41,25 @@ util.astToString = function (ast) {
     }
     return escodegen.generate(ast);
 };
-util.getFormattedBaseInfo = function (node, options) {
+util.getFormattedBaseInfo = function (node) {
     var callee = undefined;
     var clonedNode = _.clone(node, true);
     var expression = undefined;
+    var expArgs = undefined;
+    var secondArg = undefined;
     var oriDeps = undefined;
     var oriVars = undefined;
     var name = undefined;
-    if (clonedNode.type === 'ExpressionStatement') {
+    if (this.isDefineModule(clonedNode)) {
         expression = clonedNode.expression;
         callee = expression.callee;
-        if (callee.type === 'Identifier' && callee.name === 'define') {
-            var opInfo = {};
-            var expArgs = expression.arguments;
-            var secondArg = expArgs[1];
+        expArgs = expression.arguments;
+        secondArg = expArgs[1];
+        if (secondArg.type === 'ArrayExpression') {
             name = expArgs[0];
-            if (secondArg.type === 'ArrayExpression') {
-                oriDeps = secondArg.elements;
-                if (expArgs[2] && expArgs[2].type === 'FunctionExpression') {
-                    oriVars = expArgs[2].params;
-                }
+            oriDeps = secondArg.elements;
+            if (expArgs[2] && expArgs[2].type === 'FunctionExpression') {
+                oriVars = expArgs[2].params;
             }
         }
     }
@@ -83,6 +77,9 @@ util.getFormattedBaseInfo = function (node, options) {
             callBackFunBody: this.astToString(this.getDefineFunBody(node))
         }
     };
+};
+util.isProgram = function (target) {
+    return target && target.type === 'Program';
 };
 util.type = function (target, type) {
     if (typeof type === 'string') {

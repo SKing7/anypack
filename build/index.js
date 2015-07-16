@@ -4,8 +4,6 @@ var glob = require("glob");
 var async = require("async");
 var _ = require("lodash");
 var nUtil = require("./nodeUtil");
-var defineScope = require("./defineScope");
-var otree = require("./tree");
 var tempateMap = require("./templateFactory");
 var util = require("./util");
 
@@ -27,24 +25,12 @@ opack.prototype.entries = function () {
 };
 opack.prototype._run = function () {
     var parallels = [];
-    var options = this.options;
+    //let options = this.options;
 
     this.entries().forEach(function (src, k) {
         parallels.push(function () {
-            var tree = new otree({
-                src: src
-            });
-            var entryAst = tree.curAst();
-            if (entryAst.type === "Program") {
-                entryAst.body.forEach(function (item) {
-                    var instance = new defineScope({
-                        dir: util.dir(src)
-                    });
-                    var baseInfo = nUtil.getFormattedBaseInfo(item, options);
-                    var bodyResult = instance.createRequireFunBody(baseInfo);
-                    console.log(bodyResult);
-                });
-            }
+            var finalContent = util.inlineDefine(src);
+            console.log(finalContent[0]);
         });
     });
     async.parallel(parallels, function () {

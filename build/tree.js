@@ -1,12 +1,17 @@
 'use strict';
 
 var escodegen = require('escodegen');
+var path = require('path');
 var esprima = require('esprima');
 var _ = require('lodash');
 var fs = require('fs');
 
-function otree(options) {
-    _.assign(this.options, options);
+function otree(pOptions) {
+    var options = this.options = this.options || {};
+    _.assign(options, pOptions);
+    if (path.extname(options.src).slice(1) !== (options.ext || 'js')) {
+        options.src = options.src + '.js';
+    }
     this._ast = this._parse(fs.readFileSync(options.src));
     return this;
 }
