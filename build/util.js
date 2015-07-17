@@ -13,6 +13,22 @@ module.exports = {
         arr.pop();
         return arr.join("/");
     },
+    filterVars: function filterVars(deps, vars, regx) {
+
+        // match tpl deps regx
+        var rtVar = [];
+        var rtDeps = [];
+        deps.forEach(function (v, k) {
+            if (!regx.test(v)) {
+                rtVar.push(vars[k]);
+                rtDeps.push(v);
+            }
+        });
+        return {
+            vars: rtVar,
+            deps: rtDeps
+        };
+    },
     inlineDefine: function inlineDefine(src, dir) {
         var _this = this;
 

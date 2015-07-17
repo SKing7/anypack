@@ -1,28 +1,27 @@
 "use strict";
 
-var fs = require("fs");
 var _ = require("lodash");
-var path = require("path");
-
 var tempateMap = require("./templateFactory");
-var nUtil = require("./nodeUtil");
-var otree = require("./tree");
-
-var regx = {
-    tplRaw: /^['"]\.\/[^'"]+['"]$/,
-    tpl: /\.\/[^'"]+$/
-};
 
 module.exports = defineScope;
 
 function defineScope(options) {
-    this.options = _.assign({}, options);
+    this.options = _.assign({
+        regx: {
+            tplRaw: /^['"]\.\/[^'"]+['"]$/,
+            tpl: /\.\/[^'"]+$/
+        }
+    }, options);
 }
+
 defineScope.prototype = {
 
     createRequireFunBody: function createRequireFunBody(baseInfo) {
 
+        var $util = require("./util");
         var baseInfoText = baseInfo.text;
+        var options = this.options();
+        var regx = options.regx;
 
         var deps = baseInfoText.oriDeps;
         var vars = baseInfoText.oriVars;
@@ -30,31 +29,16 @@ defineScope.prototype = {
         var inlinedVars = this.inlinedVars(baseInfo);
         var dynamicBody = tempateMap.dynamic(inlinedVars, baseInfoText.callBackFunBody);
         var tail = tempateMap.tail(this.getTplContentByOrder(baseInfo.oriDeps));
-        var noInlined = filterVars();
+        var noInlined = $util.filterVars(deps, vars, regx.tplRaw);
 
         return tempateMap.defineWrapper(baseInfoText.name, noInlined.deps, noInlined.vars, tempateMap.top + dynamicBody + tail);
-
-        function filterVars() {
-
-            // match tpl deps regx
-            var rtVar = [];
-            var rtDeps = [];
-            deps.forEach(function (v, k) {
-                if (!regx.tplRaw.test(v)) {
-                    rtVar.push(vars[k]);
-                    rtDeps.push(v);
-                }
-            });
-            return {
-                vars: rtVar,
-                deps: rtDeps
-            };
-        }
     },
     getTplContentByOrder: function getTplContentByOrder(deps) {
         var _this = this;
 
         var $util = require("./util");
+        var options = this.options();
+        var regx = options.regx;
         var contentQueue = [];
         deps = deps.filter(function (v, k) {
             v = v.value;
@@ -69,6 +53,8 @@ defineScope.prototype = {
         var vars = baseInfo.oriVars;
         var deps = baseInfo.oriDeps;
         var inlineCounter = 2;
+        var options = this.options();
+        var regx = options.regx;
         var inlinedVar = [];
         deps.forEach(function (v, k) {
             if (regx.tplRaw.test(v)) {
