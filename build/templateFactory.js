@@ -30,6 +30,6 @@ module.exports = {
         return 'define(' + name + ', [' + depsStr + '], function (' + varsStr + ') {' + bodyStr + '})';
     },
     defineWrapperOnlyFunctionBody: function defineWrapperOnlyFunctionBody(bodyStr) {
-        return 'function() {' + bodyStr + '}';
+        return '(function() {' + bodyStr + '}())';
     }
 };
