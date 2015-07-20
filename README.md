@@ -3,7 +3,7 @@ A package tool for component
 
 the content of deps belong to the entry files based on amd, will be inlined in the out file. 
 
-`refer to webpack。`
+
 ##OPTION
 ###entry [Array]
 the entry file
@@ -31,3 +31,6 @@ the dir of the outfile
   });
 ```
 the `main.tpl.js` and `base.css.js` will be inlined, and write to `./dest/test.js` file
+
+###reference
+- webpack
