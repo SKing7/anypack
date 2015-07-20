@@ -3,7 +3,7 @@ a new web packager that only inlined the deps of relative path, especially use f
 
 the content of deps belong to the entry files based on amd, will be inlined in the out file. 
 
-**in testing**
+**[in testing]**
 
 ##OPTION
 ###entry [Array]
