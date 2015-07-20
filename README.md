@@ -3,6 +3,7 @@ A package tool for component
 
 the content of deps belong to the entry files based on amd, will be inlined in the out file. 
 
+**in testing**
 
 ##OPTION
 ###entry [Array]
@@ -29,6 +30,24 @@ the dir of the inlined file
     };
     return test1
   });
+```
+####test/main.tpl.js
+```js
+define('main.tpl.js', [], function () {
+    var main = {
+        testFun: 1
+    };
+    return main
+}) ;
+```
+####test/base.css.js
+```js
+define('base.css.js', [], function () {
+    var baseCss = {
+        testFun: 1
+    };
+    return baseCss
+}) ;
 ```
 the `main.tpl.js` and `base.css.js` will be inlined, and write to `./dest/test.js` file
 
