@@ -8,9 +8,9 @@ the content of deps belong to the entry files based on amd, will be inlined in t
 ###entry [Array]
 the entry file
 ###nameRegx [String]
-match[1] return the name
+match[1] return the name of the inlined file
 ###outdir [String]
-the dir of the outfile
+the dir of the inlined file
 ##USAGE
 ```js
   "use strict";
@@ -18,7 +18,7 @@ the dir of the outfile
   new opack({
       entry: ['test/entry_1.js'],
       nameRegx: 'comp/(.*)',
-      outdir: 'dest'
+      outdir: './dest'
   });
 ```
 ####test/entry_1.js
