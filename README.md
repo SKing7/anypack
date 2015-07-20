@@ -1,5 +1,5 @@
 # anypack
-A package tool for component
+a new web packager that only inlined the deps of relative path, especially use for building components
 
 the content of deps belong to the entry files based on amd, will be inlined in the out file. 
 
