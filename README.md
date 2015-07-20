@@ -7,7 +7,7 @@ the content of deps belong to the entry files based on amd, will be inlined in t
 
 ##OPTION
 ###entry [Array]
-the entry file
+the entry files
 ###nameRegx [String]
 match[1] return the name of the inlined file
 ###outdir [String]
@@ -53,3 +53,4 @@ the `main.tpl.js` and `base.css.js` will be inlined, and write to `./dest/test.j
 
 ###reference
 - webpack
+- export common module
