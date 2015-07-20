@@ -28,27 +28,5 @@ module.exports = {
             vars: rtVar,
             deps: rtDeps
         };
-    },
-    inlineDefine: function inlineDefine(src, dir) {
-        var _this = this;
-
-        var bodyArr = [];
-        var tree = new otree({
-            src: path.join(dir || "", src)
-        });
-        var entryAst = tree.curAst();
-        if (nUtil.isProgram(entryAst)) {
-            (function () {
-                var instance = new defineScope({
-                    dir: dir || _this.dir(src)
-                });
-                entryAst.body.forEach(function (item) {
-                    var baseInfo = nUtil.getFormattedBaseInfo(item);
-                    var bodyResult = instance.createRequireFunBody(baseInfo);
-                    bodyArr.push(bodyResult);
-                });
-            })();
-        }
-        return bodyArr;
     }
 };

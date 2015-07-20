@@ -28,5 +28,8 @@ module.exports = {
     },
     defineWrapper: function defineWrapper(name, depsStr, varsStr, bodyStr) {
         return 'define(' + name + ', [' + depsStr + '], function (' + varsStr + ') {' + bodyStr + '})';
+    },
+    defineWrapperOnlyFunctionBody: function defineWrapperOnlyFunctionBody(bodyStr) {
+        return 'function() {' + bodyStr + '}';
     }
 };

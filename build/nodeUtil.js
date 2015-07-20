@@ -50,6 +50,7 @@ util.getFormattedBaseInfo = function (node) {
     var oriDeps = undefined;
     var oriVars = undefined;
     var name = undefined;
+
     if (this.isDefineModule(clonedNode)) {
         expression = clonedNode.expression;
         callee = expression.callee;

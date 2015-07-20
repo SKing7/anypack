@@ -5,6 +5,7 @@ var async = require("async");
 var _ = require("lodash");
 var nUtil = require("./nodeUtil");
 var tempateMap = require("./templateFactory");
+var defineScope = require("./defineScope");
 var util = require("./util");
 
 module.exports = opack;
@@ -29,7 +30,10 @@ opack.prototype._run = function () {
 
     this.entries().forEach(function (src, k) {
         parallels.push(function () {
-            var finalContent = util.inlineDefine(src);
+            var instance = new defineScope({
+                src: src
+            });
+            var finalContent = instance.inlineDefine();
             console.log(finalContent[0]);
         });
     });
