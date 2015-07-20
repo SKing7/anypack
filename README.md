@@ -53,4 +53,6 @@ the `main.tpl.js` and `base.css.js` will be inlined, and write to `./dest/test.j
 
 ###reference
 - webpack
-- export common module
+###TODO
+- support alias for deps
+- support export common module
