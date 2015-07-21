@@ -1,10 +1,12 @@
 {
   "name": "anypack",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "webpack the local deps ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": ""
+    "prepublish": "npm run build-cjs",
+    "build-cjs": "babel src --source-maps --out-dir . --modules common"
   },
   "author": "sking7",
   "license": "ISC",
@@ -15,6 +17,7 @@
     "glob": "^5.0.12"
   },
   "devDependencies": {
+    "babel": "^5.6.23",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0"
   },
@@ -42,9 +45,8 @@
   "jspm": {
     "registry": "jspm",
     "main": "index",
-    "format": "es6",
     "directories": {
-      "lib": "lib"
+      "lib": "src"
     },
     "dependencies": {},
     "devDependencies": {
