@@ -1,6 +1,6 @@
 {
   "name": "anypack",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "webpack the local deps ",
   "main": "index.js",
   "scripts": {
@@ -43,22 +43,8 @@
     "main": "index",
     "registry": "jspm",
     "directories": {
-      "lib": "lib",
-      "test": "test"
+      "lib": "lib"
     },
-    "dependencies": {
-      "async": "npm:async@^1.4.0",
-      "escodegen": "npm:escodegen@^1.6.1",
-      "esprima": "npm:esprima@^2.4.1",
-      "fs": "npm:fs@^0.0.2",
-      "glob": "npm:glob@^5.0.14",
-      "lodash": "npm:lodash@^3.10.0",
-      "path": "npm:path@^0.11.14"
-    },
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.1.13",
-      "babel-runtime": "npm:babel-runtime@^5.1.13",
-      "core-js": "npm:core-js@^0.9.4"
-    }
+    "dependencies": {}
   }
 }
