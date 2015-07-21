@@ -12,7 +12,10 @@ match[1] return the name of the inlined file
 ###outdir [String]
 the dir of the inlined file
 ###TEST
-`npm test`
+```shell
+npm test
+```
+
 the inlined file will be write in `test/dest/[define name]`
 ##SAMPLE
 ```js
