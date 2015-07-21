@@ -7,6 +7,7 @@ var paths = {
 var gulp = require("gulp");
 var fs = require("fs");
 var babel = require("gulp-babel");
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('runtest', function() {
     var pathOut = paths.testOutDest;
@@ -24,7 +25,9 @@ gulp.task('runtest', function() {
 });
 gulp.task('babel', function() {
   return gulp.src(paths.babel)
+  .pipe(sourcemaps.init())
   .pipe(babel())
+  .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(paths.dest))
 })
 gulp.task('watch', ['babel'], function() {

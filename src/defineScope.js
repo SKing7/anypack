@@ -85,6 +85,7 @@ defineScope.prototype = {
 
         if (nUtil.isProgram(entryAst)) {
             entryAst.body.forEach(item =>{
+                if (!nUtil.isDefineModule(item)) return;
                 baseInfo = nUtil.getFormattedBaseInfo(item);
                 let bodyResult = this.createRequireFunBody(baseInfo, depDefine)
                 bodyArr.push(bodyResult);

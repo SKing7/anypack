@@ -16,7 +16,7 @@ util.isDefineModule = function (node) {
     if (node.type === 'ExpressionStatement') {
         expression = node.expression;
         callee = expression.callee
-        if (callee.type === 'Identifier' && callee.name === 'define') {
+        if (callee && callee.type === 'Identifier' && callee.name === 'define') {
             return true;
         }
     }
