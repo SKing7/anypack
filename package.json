@@ -1,6 +1,6 @@
 {
   "name": "anypack",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "webpack the local deps ",
   "main": "index.js",
   "scripts": {
@@ -42,6 +42,7 @@
   "jspm": {
     "main": "index",
     "registry": "jspm",
+    "format": "es6",
     "directories": {
       "lib": "lib"
     },
