@@ -4,7 +4,7 @@
   "description": "webpack the local deps ",
   "main": "index.js",
   "scripts": {
-    "test": ""
+    "test": "",
     "prepublish": "npm run build-cjs",
     "build-cjs": "babel src --source-maps --out-dir . --modules common"
   },
