@@ -1,8 +1,8 @@
 {
   "name": "anypack",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "webpack the local deps ",
-  "main": "index.js",
+  "main": "dest/index.js",
   "scripts": {
     "prepublish": "npm run build-cjs",
     "build-cjs": "babel src --source-maps --out-dir ./dest --modules common",
