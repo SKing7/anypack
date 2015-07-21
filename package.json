@@ -1,6 +1,6 @@
 {
   "name": "anypack",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "webpack the local deps ",
   "main": "index.js",
   "scripts": {
@@ -40,12 +40,17 @@
   },
   "homepage": "https://github.com/SKing7/anypack#readme",
   "jspm": {
-    "main": "index",
     "registry": "jspm",
+    "main": "index",
     "format": "es6",
     "directories": {
       "lib": "lib"
     },
-    "dependencies": {}
+    "dependencies": {},
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    }
   }
 }
