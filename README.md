@@ -1,13 +1,12 @@
 # anypack
-A package tool for component
+a new web packager that only inlined the deps of relative path, especially used for building components
 
-the content of deps belong to the entry files based on amd, will be inlined in the out file. 
 
-**in testing**
+**[in testing]**
 
 ##OPTION
 ###entry [Array]
-the entry file
+the entry files
 ###nameRegx [String]
 match[1] return the name of the inlined file
 ###outdir [String]
@@ -49,7 +48,11 @@ define('base.css.js', [], function () {
     return baseCss
 }) ;
 ```
-the `main.tpl.js` and `base.css.js` will be inlined, and write to `./dest/test.js` file
+the `main.tpl.js` and `base.css.js` will be inlined, and write to `./dest/test1.js` file
 
 ###reference
 - webpack
+
+###TODO
+- support alias for deps
+- support export common module
