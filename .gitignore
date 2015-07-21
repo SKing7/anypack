@@ -2,6 +2,7 @@ node_modules
 jspm_packages
 test/lib
 *.swp
-dest
+dest/
 config.js
 *.map
+*.log

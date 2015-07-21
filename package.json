@@ -4,9 +4,10 @@
   "description": "webpack the local deps ",
   "main": "index.js",
   "scripts": {
-    "test": "",
     "prepublish": "npm run build-cjs",
-    "build-cjs": "babel src --source-maps --out-dir . --modules common"
+    "build-cjs": "babel src --source-maps --out-dir ./dest --modules common",
+    "test": "gulp runtest",
+    "clean": "rm -rf dest test/dest test/lib"
   },
   "author": "sking7",
   "license": "ISC",
