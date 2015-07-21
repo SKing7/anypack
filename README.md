@@ -6,7 +6,7 @@ a new web packager that only inlined the deps of relative path, especially used 
 
 ##OPTION
 ###entry [Array]
-the entry files
+the entry files, [the file path matchs glob patterns]
 ###nameRegx [String]
 match[1] return the name of the inlined file
 ###outdir [String]
