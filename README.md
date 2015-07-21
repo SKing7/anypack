@@ -48,7 +48,7 @@ define('base.css.js', [], function () {
     return baseCss
 }) ;
 ```
-the `main.tpl.js` and `base.css.js` will be inlined, and write to `./dest/test.js` file
+the `main.tpl.js` and `base.css.js` will be inlined, and write to `./dest/test1.js` file
 
 ###reference
 - webpack
