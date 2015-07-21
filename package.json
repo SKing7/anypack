@@ -1,13 +1,13 @@
 {
   "name": "anypack",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "webpack the local deps ",
   "main": "dest/index.js",
   "scripts": {
     "prepublish": "npm run build-cjs",
     "build-cjs": "babel src --source-maps --out-dir ./dest --modules common",
     "test": "gulp runtest",
-    "clean": "rm -rf dest test/dest test/lib"
+    "clean-build": "rm -rf dest test/dest test/lib"
   },
   "author": "sking7",
   "license": "ISC",
@@ -22,17 +22,13 @@
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0"
   },
-  "directories": {
-    "test": "test",
-    "packages": "jspm_packages"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SKing7/anypack.git"
   },
   "keywords": [
-    "web",
-    "pack",
+    "webpack",
+    "packager",
     "pack",
     "the",
     "deps",
