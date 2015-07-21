@@ -1,6 +1,6 @@
 {
   "name": "anypack",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "webpack the local deps ",
   "main": "index.js",
   "scripts": {
@@ -42,7 +42,8 @@
   "jspm": {
     "registry": "jspm",
     "directories": {
-      "test": "test"
+      "test": "test",
+      "lib": "lib"
     },
     "dependencies": {
       "async": "npm:async@^1.4.0",
