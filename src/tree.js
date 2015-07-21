@@ -1,8 +1,8 @@
-let escodegen = require('escodegen');
-let path = require("path");
-let esprima = require('esprima');
-let _ = require("lodash");
-let fs = require("fs");
+const escodegen = require('escodegen');
+const path = require("path");
+const esprima = require('esprima');
+const _ = require("lodash");
+const fs = require("fs");
 
 function otree(pOptions) {
     let options = this.options = this.options || {};

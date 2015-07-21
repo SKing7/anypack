@@ -1,7 +1,7 @@
-let otree = require("./tree");
-let path = require("path");
-let nUtil = require("./nodeUtil");
-let defineScope = require("./defineScope");
+const otree = require("./tree");
+const path = require("path");
+const nUtil = require("./nodeUtil");
+const defineScope = require("./defineScope");
 
 module.exports = {
     dir(src) {

@@ -1,12 +1,12 @@
-let glob = require("glob");
-let fs = require("fs");
-let path = require("path");
-let async = require("async");
-let _ = require("lodash");
-let nUtil = require("./nodeUtil");
-let tempateMap = require("./templateFactory");
-let defineScope = require("./defineScope");
-let util = require("./util");
+const glob = require("glob");
+const fs = require("fs");
+const path = require("path");
+const async = require("async");
+const _ = require("lodash");
+const nUtil = require("./nodeUtil");
+const tempateMap = require("./templateFactory");
+const defineScope = require("./defineScope");
+const util = require("./util");
 
 module.exports = opack; 
 

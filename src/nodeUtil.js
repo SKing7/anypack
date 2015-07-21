@@ -1,6 +1,6 @@
 let util = {};
-let _ = require("lodash");
-let escodegen = require('escodegen');
+const _ = require("lodash");
+const escodegen = require('escodegen');
 
 module.exports = util;
 

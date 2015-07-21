@@ -1,9 +1,9 @@
-let _ = require('lodash');
-let otree = require("./tree");
-let tempateMap = require("./templateFactory");
-let path = require("path");
-let $util = require("./util");
-let nUtil = require("./nodeUtil");
+const _ = require('lodash');
+const otree = require("./tree");
+const tempateMap = require("./templateFactory");
+const path = require("path");
+const $util = require("./util");
+const nUtil = require("./nodeUtil");
 
 function defineScope(options) {
     this.options = _.assign({
