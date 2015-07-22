@@ -5,15 +5,15 @@ a new web packager that only inlined the deps of relative path, especially used 
 **[in testing]**
 
 ##Options
-###entry [Array]
+####entry [Array]
 the entry files, [the file path matchs glob patterns]
-###nameRegx [String]
+####nameRegx [String]
 match[1] return the name of the inlined file
-###outdir [String]
+####outdir [String]
 the dir of the inlined file
-###Install
+##Install
 `npm install anypack --save-dev`
-###Test
+##Test
 ```shell
 npm test
 ```
@@ -58,9 +58,9 @@ define('base.css', [], function () {
 ```
 the `main.tpl.js` and `base.css.js` will be inlined, and write to `./dest/test1.js` file
 
-###Reference
+##Reference
 - webpack
 
-###TODO
+##TODO
 - support alias for deps
 - support export common module
