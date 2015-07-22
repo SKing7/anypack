@@ -11,6 +11,8 @@ the entry files, [the file path matchs glob patterns]
 match[1] return the name of the inlined file
 ###outdir [String]
 the dir of the inlined file
+###Install
+`npm install anypack --save-dev`
 ###Test
 ```shell
 npm test
