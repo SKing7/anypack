@@ -4,8 +4,8 @@ a new web packager that only inlined the deps of relative path, especially used 
 
 **[in testing]**
 
-##OPTION
-###entry [Array]
+##Options
+####entry [Array]
 the entry files, [the file path matchs glob patterns]
 ###resolve [String]
 ####resolve.root [String]
@@ -22,7 +22,7 @@ the matched[1] will be the filename of inlined file;
 npm test
 ```
 the inlined file will be write in `test/dest/[define name]`
-##SAMPLE
+##Sample
 ```js
 "use strict";
 var opack = require('./lib/index');
@@ -69,9 +69,9 @@ define('base.css', [], function () {
 ```
 the `main.tpl.js` and `base.css.js` will be inlined, and write to `./dest/test1.js` file
 
-###reference
+##Reference
 - webpack
 
-###TODO
+##TODO
 - support alias for deps
 - support export common module
