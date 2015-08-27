@@ -7,25 +7,38 @@ a new web packager that only inlined the deps of relative path, especially used 
 ##OPTION
 ###entry [Array]
 the entry files, [the file path matchs glob patterns]
-###nameRegx [String]
-match[1] return the name of the inlined file
-###outdir [String]
-the dir of the inlined file
+###resolve [String]
+####resolve.root [String]
+absolute path of deps
+####resolve.alias [Object]
+Replace matched modules by other paths, the key is regexp String
+###output
+####output.path [String]
+the inlined target file
+####output.fileNamePattern [String]
+the matched[1] will be the filename of inlined file;
 ###TEST
 ```shell
 npm test
 ```
-
 the inlined file will be write in `test/dest/[define name]`
 ##SAMPLE
 ```js
-  "use strict";
-  var opack = require('./lib/index');
-  new opack({
-      entry: ['test/entry_1.js'],
-      nameRegx: 'comp/(.*)',
-      outdir: 'test/dest'
-  });
+"use strict";
+var opack = require('./lib/index');
+new opack({
+    entry: ['test/entry_1.js', 'test/entry_2.js'],
+    resolve: {
+        root: process.cwd(),
+        alias: {
+            '.*': {dir: './build'},
+        }
+    },
+    output: {
+        path: 'test/dest',
+        fileNamePattern: 'comp/(.*)',
+    }
+});
 ```
 ####test/entry_1.js
 ```js
@@ -36,7 +49,7 @@ the inlined file will be write in `test/dest/[define name]`
     return test1
   });
 ```
-####test/main.tpl.js
+####test/build/main.tpl.js
 ```js
 define('main.tpl', [], function () {
     var main = {
@@ -45,7 +58,7 @@ define('main.tpl', [], function () {
     return main
 }) ;
 ```
-####test/base.css.js
+####test/build/base.css.js
 ```js
 define('base.css', [], function () {
     var baseCss = {

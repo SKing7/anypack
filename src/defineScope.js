@@ -12,7 +12,6 @@ function defineScope(options) {
             tpl: /\.\/[^'"]+$/,
         }
     }, options);
-    console.log(options);
     this.deps = [];
     this.vars = [];
 }
@@ -60,11 +59,9 @@ defineScope.prototype = {
             var targetDir;
             _.forEach(resolve.alias, function (v, k) {
                 if (new RegExp(k).test(target)) {
-                    console.log(resolve.root, srcDir, resolve.alias[k].dir);
                     targetDir = path.join(resolve.root, srcDir, resolve.alias[k].dir);
                 }
             });
-            console.log(targetDir);
             return targetDir || path.join(resolve.root, srcDir);
         }
     },
