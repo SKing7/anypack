@@ -11,14 +11,23 @@ const util = require("./util");
 module.exports = opack; 
 
 function opack(options) {
-    this.options = _.assign({}, options);
+    this.options = _.assign({
+        nameRegx: '',
+        output: {},
+        entry: [],
+        resolve: {
+            root: process.cwd(),
+            alias: {},
+        } 
+    }, options);
+    console.log(this.options);
     this._run();
 }
 
 opack.prototype.entries = function () {
     let entries = [];
     let entriesObj = [];
-    let entryOption = this.options.entry = this.options.entry || [];
+    let entryOption = this.options.entry;
     entryOption.forEach(item => {
         let files = glob.sync(item);
         entries = entries.concat(files);
@@ -28,11 +37,13 @@ opack.prototype.entries = function () {
 opack.prototype._run = function () {
     let parallels = []; 
     let options = this.options;
+    var outConfig = options.output;
 
     this.entries().forEach((src, k)=>{
         parallels.push(()=>{
             let instance = new defineScope({
-                src: src
+                src: src,
+                resolve: options.resolve
             });
             let info = instance.inlineDefine();
             let finalContent = info.contents.join('');
@@ -41,11 +52,11 @@ opack.prototype._run = function () {
         });
     });
     function outdir(name) {
-        let m = name.match(RegExp(options.nameRegx));
+        let m = name.match(RegExp(outConfig.fileNamePattern));
         if (m) {
             name = m[1];
         }
-        return path.join(options.outdir, name + '.js');
+        return path.join(outConfig.path, name + '.js');
     }
     async.parallel(parallels, function () {
         console.log('done');

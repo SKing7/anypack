@@ -12,6 +12,7 @@ function defineScope(options) {
             tpl: /\.\/[^'"]+$/,
         }
     }, options);
+    console.log(options);
     this.deps = [];
     this.vars = [];
 }
@@ -44,15 +45,28 @@ defineScope.prototype = {
     getTplContentByOrder(deps) {
 
         let options = this.options;
+        let resolve = options.resolve;
         let regx = options.regx;
         let contentQueue = [];
         deps = deps.filter((v, k) => {
             v = v.value;
             if (regx.tpl.test(v)) { //deps
-                contentQueue.push(this.inlineDefine(v, $util.dir(options.src), true).contents.join(''));
+                contentQueue.push(this.inlineDefine(v, getTargetDir(options.src, v), true).contents.join(''));
             } 
         });
         return contentQueue;
+        function getTargetDir(src, target) {
+            var srcDir = $util.dir(options.src);
+            var targetDir;
+            _.forEach(resolve.alias, function (v, k) {
+                if (new RegExp(k).test(target)) {
+                    console.log(resolve.root, srcDir, resolve.alias[k].dir);
+                    targetDir = path.join(resolve.root, srcDir, resolve.alias[k].dir);
+                }
+            });
+            console.log(targetDir);
+            return targetDir || path.join(resolve.root, srcDir);
+        }
     },
     inlinedVars(biObj) {
 

@@ -5,3 +5,4 @@ test/lib
 config.js
 *.map
 *.log
+dest
