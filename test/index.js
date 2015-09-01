@@ -4,8 +4,9 @@ new opack({
     entry: ['test/entry_1.js', 'test/entry_2.js'],
     resolve: {
         root: process.cwd(),
+        dir: './build',
+        ext: 'js',
         alias: {
-            '.*': {dir: './build'},
         }
     },
     output: {

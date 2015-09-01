@@ -49,20 +49,32 @@ defineScope.prototype = {
         let contentQueue = [];
         deps = deps.filter((v, k) => {
             v = v.value;
+            let config;
+            let normalizedSrc;
+            let  srcDir = $util.dir(options.src);
             if (regx.tpl.test(v)) { //deps
-                contentQueue.push(this.inlineDefine(v, getTargetDir(options.src, v), true).contents.join(''));
+                config = getTargetConfig(v);
+                normalizedSrc = normalizeSrc(v, config); 
+                contentQueue.push(this.inlineDefine(normalizedSrc, path.join(config.root, srcDir, config.dir || ''), true).contents.join(''));
             } 
         });
         return contentQueue;
-        function getTargetDir(src, target) {
-            var srcDir = $util.dir(options.src);
-            var targetDir;
-            _.forEach(resolve.alias, function (v, k) {
+        function getTargetConfig(target) {
+            var config = resolve ;
+            _.some(resolve.alias, function (v, k) {
                 if (new RegExp(k).test(target)) {
-                    targetDir = path.join(resolve.root, srcDir, resolve.alias[k].dir);
+                    config = _.assign({}, resolve, v);
+                    return true
                 }
             });
-            return targetDir || path.join(resolve.root, srcDir);
+            return config;
+        }
+        function normalizeSrc(src, config) {
+            var ext = path.extname;
+            if (config.ext && ext !== '.' + config.ext) {
+                return src + '.' + config.ext;
+            }
+            return src;
         }
     },
     inlinedVars(biObj) {

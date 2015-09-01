@@ -1,6 +1,6 @@
 {
   "name": "anypack",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "webpack the local deps ",
   "main": "dest/index.js",
   "scripts": {

@@ -10,8 +10,13 @@ the entry files, [the file path matchs glob patterns]
 ###resolve [String]
 ####resolve.root [String]
 absolute path of deps
+####resolve.dir [String]
+the dir relative to root;
+####resolve.ext [String]
+the extname of deps. if the extname of dep file is not the value setted, the file of target will change to [filename.ext]
 ####resolve.alias [Object]
 Replace matched modules by other paths, the key is regexp String
+support the options above[e.g. root,ext, dir];
 ###output
 ####output.path [String]
 the inlined target file
