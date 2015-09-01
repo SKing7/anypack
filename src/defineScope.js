@@ -70,7 +70,7 @@ defineScope.prototype = {
             return config;
         }
         function normalizeSrc(src, config) {
-            var ext = path.extname;
+            var ext = path.extname(src);
             if (config.ext && ext !== '.' + config.ext) {
                 return src + '.' + config.ext;
             }
