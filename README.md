@@ -1,4 +1,6 @@
 # anypack
+[![NPM version][npm-image]][npm-url] [![Linux Build Status][travis-image]][travis-url] [![Windows Build Status][appveyor-image]][appveyor-url] [![Dependency Status][depstat-image]][depstat-url] [![devDependency Status][devDepstat-image]][devDepstat-url]
+
 a new web packager that only inlined the deps of relative path, especially used for building components
 
 
