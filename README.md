@@ -1,5 +1,5 @@
 # anypack
-[![NPM version][npm-image]][npm-url] [![Linux Build Status][travis-image]][travis-url] [![Windows Build Status][appveyor-image]][appveyor-url] [![Dependency Status][depstat-image]][depstat-url] [![devDependency Status][devDepstat-image]][devDepstat-url]
+[![Build Status](https://travis-ci.org/SKing7/anypack.svg?branch=master)](https://travis-ci.org/SKing7/anypack)
 
 a new web packager that only inlined the deps of relative path, especially used for building components
 
@@ -82,3 +82,5 @@ the `main.tpl.js` and `base.css.js` will be inlined, and write to `./dest/test1.
 ## TODO
 - support alias for deps
 - support export common module
+
+
